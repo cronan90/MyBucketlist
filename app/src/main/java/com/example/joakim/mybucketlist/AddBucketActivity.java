@@ -1,5 +1,6 @@
 package com.example.joakim.mybucketlist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 public class AddBucketActivity extends AppCompatActivity {
 
     private EditText txtInputNameOnBucket;
-    private Button createBucketButton;
+    private Button createBucketButton, goBackButton;
     private String nameOnBucket;
 
     @Override
@@ -42,6 +43,17 @@ public class AddBucketActivity extends AppCompatActivity {
                 Bucket bucket = new Bucket(nameOnBucket, true);
                 HomeActivity.myBucketList.add(bucket);
                 Toast.makeText(getApplicationContext(), nameOnBucket + " är tillagd i din bucketlist.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(AddBucketActivity.this, ShowBucketListActivity.class));
+            }
+        });
+
+        goBackButton = (Button) findViewById(R.id.goBackFromAddBucketButton);
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddBucketActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 

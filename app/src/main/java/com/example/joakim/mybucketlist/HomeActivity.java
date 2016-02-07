@@ -42,6 +42,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        myBucketList.add(new Bucket("Go to the moon", false));
+        myBucketList.add(new Bucket("Shoppa en dinosaurie till Minna", false));
+
         showBucketListButton = (Button) findViewById(R.id.showBucketListButton);
         showBucketListButton.setOnClickListener(new View.OnClickListener(){
 
